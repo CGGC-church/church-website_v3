@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基督教顯恩堂 | Christian Glorify Grace Church</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; }
+        header, footer { background-color: #4CAF50; color: white; padding: 20px; text-align: center; position: relative; }
+        nav ul { list-style-type: none; padding: 0; margin: 0; }
+        nav ul li { display: inline-block; margin-right: 10px; position: relative; }
+        nav ul li a { color: white; text-decoration: none; padding: 5px 10px; border-radius: 5px; }
+        nav ul li a:hover { background-color: #45a049; }
+        nav ul li ul { display: none; position: absolute; top: 100%; left: 0; background-color: #4CAF50; padding: 0; list-style-type: none; }
+        nav ul li:hover ul { display: flex; flex-direction: row; }
+        nav ul li ul li { display: inline-block; margin: 0; }
+        nav ul li ul li a { display: block; padding: 10px; }
+        main { padding: 20px; max-width: 800px; margin: auto; background-color: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        section { margin-bottom: 20px; }
+        h2 { color: #4CAF50; }
+        .hero { text-align: center; padding: 50px 0; background-color: #f4f4f4; }
+        .hero img { max-width: 100%; height: auto; border-radius: 10px; }
+        .logo { width: 100px; height: auto; margin-bottom: 20px; }
+        .language-switcher { position: absolute; top: 20px; left: 20px; }
+        .language-switcher button { margin: 0 10px; padding: 10px 20px; border: none; border-radius: 5px; background-color: #4CAF50; color: white; cursor: pointer; }
+        .language-switcher button:hover { background-color: #45a049; }
+        .protected { display: none; }
+    </style>
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
+            document.querySelectorAll('.nav-link').forEach(el => el.style.display = el.classList.contains(lang) ? 'inline' : 'none');
+        }
+		
+		function promptPassword() {
+        const storedPassword = sessionStorage.getItem("password"); /*        const storedPassword = localStorage.getItem("password");*/
+
+        if (storedPassword === "CggC") {
+            document.querySelectorAll('.protected').forEach(el => el.style.display = 'block');
+        } else {
+            const password = prompt("Please enter the password to access this section:");
+            if (password === "CggC") {
+                sessionStorage.setItem("password", password);
+                document.querySelectorAll('.protected').forEach(el => el.style.display = 'block');
+            } else {
+                alert("Incorrect password.");
+            }
+        }
+    }
+		
+		
+		
+		
+		
+    </script>
+</head>
+<body onload="switchLanguage('zh-TW')">
+    <header>
+        <div class="language-switcher">
+            <button onclick="switchLanguage('zh-TW')">中文</button>
+            <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <img src="C:\ivanwong\materials\personal\church\website\cggc_logo.jpg" alt="教會標誌" class="logo">
+        <h1 class="zh-TW lang">基督教顯恩堂</h1>
+        <h1 class="en lang" style="display:none;">Christian Glorify Grace Church</h1>
+        <nav>
+            <ul>
+                <li class="zh-TW nav-link"><a href="#home">首頁</a></li>
+                <li class="zh-TW nav-link"><a href="#about">關於我們</a></li>
+                <li class="zh-TW nav-link"><a href="#services">禮拜</a></li>
+                <li class="zh-TW nav-link"><a href="#sermons" onclick="promptPassword()">講道</a></li>            
+                <li class="zh-TW nav-link">
+                    <a href="#events">活動</a>
+                    <ul>
+                        <li><a href="past-events.html">過往活動</a></li> <!-- Added link to sub-page -->
+                    </ul>
+                </li>
+                <li class="zh-TW nav-link"><a href="#contact">聯絡我們</a></li>
+                <li class="zh-TW nav-link"><a href="#giving">捐贈</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#home">Home</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#about">About Us</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#services">Services</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#sermons" onclick="promptPassword()">Sermons</a></li>            
+                <li class="en nav-link" style="display:none;">
+                    <a href="#events">Events</a>
+                    <ul>
+                        <li><a href="past-events.html">Past Events</a></li> <!-- Added link to sub-page -->
+                    </ul>
+                </li>
+                <li class="en nav-link" style="display:none;"><a href="#contact">Contact Us</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#giving">Giving</a></li>
+            </ul>
+        </nav>		
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <h2 class="zh-TW lang">首頁</h2>
+            <h2 class="en lang" style="display:none;">Home</h2>
+            <img src="C:\ivanwong\materials\personal\church\website\front_page.jpg" alt="教會圖片">
+            <p class="zh-TW lang">歡迎信息，教會簡介，導航選單。</p>
+            <p class="en lang" style="display:none;">Welcome message, church introduction, navigation menu.</p>
+        </section>
+        <section id="about">
+            <h2 class="zh-TW lang">關於我們</h2>
+            <h2 class="en lang" style="display:none;">About Us</h2>
+            <p class="zh-TW lang">教會歷史，使命，價值觀，領導團隊簡介。</p>
+            <p class="en lang" style="display:none;">Church history, mission, values, leadership team introduction.</p>
+        </section>
+        <section id="services">
+            <h2 class="zh-TW lang">禮拜</h2>
+            <h2 class="en lang" style="display:none;">Services</h2>
+            <p class="zh-TW lang">禮拜安排，禮拜類型（例如，主日崇拜，聖經學習），特別活動。</p>
+            <p class="en lang" style="display:none;">Service schedule, types of services (e.g., Sunday worship, Bible study), special events.</p>
+        </section>
+        <section id="sermons" class="protected">
+			<h2 class="zh-TW lang">講道</h2>
+			<h2 class="en lang" style="display:none;">Sermons</h2>
+			<p class="zh-TW lang"><a href="https://youtu.be/5NHdbC6S2H0?si=bLISmwtg0xPq8MUf" target="_blank">2025年2月23日</a></p>
+			<p class="en lang"><a href="https://youtu.be/5NHdbC6S2H0?si=bLISmwtg0xPq8MUf" target="_blank">23rd Feb 2025</a></p>
+
+			<p class="zh-TW lang"><a href="https://youtu.be/5UzoadI2a2k?si=RfvH4W1GY59dWtwj" target="_blank">2025年2月16日</a></p>
+			<p class="en lang"><a href="https://youtu.be/5UzoadI2a2k?si=RfvH4W1GY59dWtwj" target="_blank">16th Feb 2025</a></p>
+
+			<p class="zh-TW lang"><a href="https://youtu.be/SDX_VAfN9xo?si=0EQnAZ07PK120RTT" target="_blank">2025年2月9日</a></p>
+			<p class="en lang"><a href="https://youtu.be/SDX_VAfN9xo?si=0EQnAZ07PK120RTT" target="_blank">9th Feb 2025</a></p>
+
+			
+			<p class="zh-TW lang"><a href="https://youtu.be/3k2r_d0PM7Y?si=lkCKrWIawYhUyUTr" target="_blank">2025年2月2日</a></p>
+			<p class="en lang"><a href="https://youtu.be/3k2r_d0PM7Y?si=lkCKrWIawYhUyUTr" target="_blank">2nd Feb 2025</a></p>
+
+		</section>		
+        <section id="events">
+            <h2 class="zh-TW lang">活動</h2>
+            <h2 class="en lang" style="display:none;">Events</h2>
+            <p class="zh-TW lang">活動日曆，活動報名，過去活動的亮點。</p>
+            <p class="en lang" style="display:none;">Event calendar, event registration, highlights of past events.</p>
+            <ul>
+                <li class="zh-TW"><a href="past-events.html">過往活動</a></li>
+                <li class="en" style="display:none;"><a href="past-events.html">Past Events</a></li>
+            </ul>
+        </section>
+        <section id="contact">
+            <h2 class="zh-TW lang">聯絡我們</h2>
+            <h2 class="en lang" style="display:none;">Contact Us</h2>
+            <p class="zh-TW lang">聯絡方式，地圖位置，聯絡表格。</p>
+            <p class="en lang" style="display:none;">Contact information, map location, contact form.</p>
+        </section>
+        <section id="giving">
+            <h2 class="zh-TW lang">捐贈</h2>
+            <h2 class="en lang" style="display:none;">Giving</h2>
+            <p class="zh-TW lang">捐款和支持。</p>
+            <p class="en lang" style="display:none;">Donations and support.</p>
+        </section>
+    </main>
+    <footer>
+        <p class="zh-TW lang">&copy; 2025 教會網站. 保留所有權利。</p>
+        <p class="en lang" style="display:none;">&copy; 2025 Church Website. All rights reserved.</p>
+		
+		
+		<nav>
+            <ul>
+                <li class="zh-TW nav-link"><a href="#home">首頁</a></li>
+                <li class="zh-TW nav-link"><a href="#about">關於我們</a></li>
+                <li class="zh-TW nav-link"><a href="#services">禮拜</a></li>
+                <li class="zh-TW nav-link"><a href="#sermons" onclick="promptPassword()">講道</a></li>            
+                <li class="zh-TW nav-link">
+                    <a href="#events">活動</a>
+                    <ul>
+                        <li><a href="past-events.html">過往活動</a></li> <!-- Added link to sub-page -->
+                    </ul>
+                </li>
+                <li class="zh-TW nav-link"><a href="#contact">聯絡我們</a></li>
+                <li class="zh-TW nav-link"><a href="#giving">捐贈</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#home">Home</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#about">About Us</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#services">Services</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#sermons" onclick="promptPassword()">Sermons</a></li>            
+                <li class="en nav-link" style="display:none;">
+                    <a href="#events">Events</a>
+                    <ul>
+                        <li><a href="past-events.html">Past Events</a></li> <!-- Added link to sub-page -->
+                    </ul>
+                </li>
+                <li class="en nav-link" style="display:none;"><a href="#contact">Contact Us</a></li>
+                <li class="en nav-link" style="display:none;"><a href="#giving">Giving</a></li>
+            </ul>
+        </nav>
+		
+		
+		<div class="language-switcher">
+			<button onclick="switchLanguage('zh-TW')">中文</button>
+			<button onclick="switchLanguage('en')">English</button>
+		</div>
+    </footer>
+</body>
+</html>
+
