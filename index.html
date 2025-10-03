@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="基督教顯恩堂 | Christian Glorify Grace Church - 了解我們的使命和活動">
+    <meta name="keywords" content="基督教, 教會, 禮拜, 講道, 活動">
     <title>基督教顯恩堂 | Christian Glorify Grace Church</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; }
@@ -32,34 +34,39 @@
             document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
             document.querySelectorAll('.nav-link').forEach(el => el.style.display = el.classList.contains(lang) ? 'inline' : 'none');
         }
-		
-		function promptPassword() {
-        const storedPassword = sessionStorage.getItem("password"); /*        const storedPassword = localStorage.getItem("password");*/
 
-        if (storedPassword === "abcd") {
-            document.querySelectorAll('.protected').forEach(el => el.style.display = 'block');
-        } else {
-            const password = prompt("Please enter the password to access this section:");
-            if (password === "abcd") {
-                sessionStorage.setItem("password", password);
+        function promptPassword() {
+            const storedPassword = sessionStorage.getItem("password");
+
+            if (storedPassword === "CggC") {
                 document.querySelectorAll('.protected').forEach(el => el.style.display = 'block');
             } else {
-                alert("Incorrect password.");
+                const password = prompt("請輸入密碼以訪問此部分:");
+                if (password === "CggC") {
+                    sessionStorage.setItem("password", password);
+                    document.querySelectorAll('.protected').forEach(el => el.style.display = 'block');
+                } else {
+                    alert("密碼錯誤。");
+                }
             }
         }
-    }
-		
-		
-		
-		
-		
+
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage('zh-TW');
+
+            document.querySelectorAll('.language-switcher button').forEach(button => {
+                button.addEventListener('click', function() {
+                    switchLanguage(this.dataset.lang);
+                });
+            });
+        });
     </script>
 </head>
-<body onload="switchLanguage('zh-TW')">
+<body>
     <header>
         <div class="language-switcher">
-            <button onclick="switchLanguage('zh-TW')">中文</button>
-            <button onclick="switchLanguage('en')">English</button>
+            <button data-lang="zh-TW">中文</button>
+            <button data-lang="en">English</button>
         </div>
         <img src="cggc_logo.jpg" alt="教會標誌" class="logo">
         <h1 class="zh-TW lang">基督教顯恩堂</h1>
@@ -73,11 +80,10 @@
                 <li class="zh-TW nav-link">
                     <a href="#events">活動</a>
                     <ul>
-                        <li><a href="past-events.html">過往活動</a></li> <!-- Added link to sub-page -->
+                        <li><a href="past-events.html">過往活動</a></li>
                     </ul>
                 </li>
                 <li class="zh-TW nav-link"><a href="#contact">聯絡我們</a></li>
-                <li class="zh-TW nav-link"><a href="#giving">捐贈</a></li>
                 <li class="en nav-link" style="display:none;"><a href="#home">Home</a></li>
                 <li class="en nav-link" style="display:none;"><a href="#about">About Us</a></li>
                 <li class="en nav-link" style="display:none;"><a href="#services">Services</a></li>
@@ -85,11 +91,10 @@
                 <li class="en nav-link" style="display:none;">
                     <a href="#events">Events</a>
                     <ul>
-                        <li><a href="past-events.html">Past Events</a></li> <!-- Added link to sub-page -->
+                        <li><a href="past-events.html">Past Events</a></li>
                     </ul>
                 </li>
                 <li class="en nav-link" style="display:none;"><a href="#contact">Contact Us</a></li>
-                <li class="en nav-link" style="display:none;"><a href="#giving">Giving</a></li>
             </ul>
         </nav>		
     </header>
@@ -98,67 +103,74 @@
             <h2 class="zh-TW lang">首頁</h2>
             <h2 class="en lang" style="display:none;">Home</h2>
             <img src="front_page.jpg" alt="教會圖片">
-            <p class="zh-TW lang">歡迎信息，教會簡介，導航選單。</p>
-            <p class="en lang" style="display:none;">Welcome message, church introduction, navigation menu.</p>
+            <p class="zh-TW lang">在這裡，您不只是被接納——您是被愛的。耶穌愛您，我們也愛您。</p>
+            <p class="en lang" style="display:none;">Jesus loves you, and so do we—no matter who you are, you belong here.</p>
         </section>
         <section id="about">
             <h2 class="zh-TW lang">關於我們</h2>
             <h2 class="en lang" style="display:none;">About Us</h2>
-            <p class="zh-TW lang">教會歷史，使命，價值觀，領導團隊簡介。</p>
-            <p class="en lang" style="display:none;">Church history, mission, values, leadership team introduction.</p>
+            <p class="zh-TW lang">基督教顯恩堂於1992年由曾漢平牧師帶領，搬遷至上水植堂，至今已33年。教會一直秉持基督耶穌愛世人的心，積極關懷並連繫社區，感恩成為區內一個充滿愛與盼望的屬靈家園。顯恩堂見證了神豐盛的恩典與信實，在社區關懷、青少年事工、家庭牧養及宣教拓展等方面不斷成長與突破。教會深信聖父、聖子、聖靈三位一體之真神，以基督耶穌為信仰核心，並相信聖靈的能力與帶領，立志建立萬國禱告的殿，並推動敬拜讚美的文化，使萬民歸主、榮耀神名。</p>
+            <p class="en lang" style="display:none;">Christian Grace Church was relocated to Sheung Shui in 1992 under the leadership of Pastor Amos Tsang. For the past 33 years, the church has faithfully served the community with the heart of Jesus Christ, who loves all people. Rooted in compassion and connection, Grace Church has become a spiritual home filled with love and hope in the Sheung Shui district. The church has witnessed God’s abundant grace and unwavering faithfulness. It continues to grow in areas such as community outreach, youth ministry, family care, and global missions. We firmly believe in the Triune God—Father, Son, and Holy Spirit—and uphold Jesus Christ as the center of our faith. Trusting in the power and guidance of the Holy Spirit, we are committed to building a house of prayer for all nations and cultivating a culture of worship and praise that glorifies God and draws people to Him.</p>
         </section>
         <section id="services">
             <h2 class="zh-TW lang">禮拜</h2>
             <h2 class="en lang" style="display:none;">Services</h2>
-            <p class="zh-TW lang">禮拜安排，禮拜類型（例如，主日崇拜，聖經學習），特別活動。</p>
-            <p class="en lang" style="display:none;">Service schedule, types of services (e.g., Sunday worship, Bible study), special events.</p>
+            <p class="zh-TW lang">禮拜安排：</p>
+            <ul class="zh-TW lang">
+                <li>星期六 2:30pm - 6:00pm  青年小組</li>
+                <li>星期六 7:00pm - 9:30pm 聖經學院</li>
+                <li>星期日 10:00am - 11:15am 禱告會</li>
+                <li>星期日 11:30am - 1:30pm 主日崇拜</li>
+                <li>星期日 3:00pm - 6:00pm  青年成人小組/婦女小組/家庭小組</li>
+            </ul>
+            <p class="en lang" style="display:none;">Service schedule:</p>
+            <ul class="en lang" style="display:none;">
+                <li>Saturday 2:30pm - 6:00pm Youth Group</li>
+                <li>Saturday 7:00pm - 9:30pm Bible College</li>
+                <li>Sunday 10:00am - 11:15am Prayer Meeting</li>
+                <li>Sunday 11:30am - 1:30pm Sunday Worship</li>
+                <li>Sunday 3:00pm - 6:00pm Young Adults Group/Women's Group/Family Group</li>
+            </ul>
         </section>
         <section id="sermons" class="protected">
-			<h2 class="zh-TW lang">講道</h2>
-			<h2 class="en lang" style="display:none;">Sermons</h2>
-			<p class="zh-TW lang"><a href="https://youtu.be/5NHdbC6S2H0?si=bLISmwtg0xPq8MUf" target="_blank">2025年2月23日</a></p>
-			<p class="en lang"><a href="https://youtu.be/5NHdbC6S2H0?si=bLISmwtg0xPq8MUf" target="_blank">23rd Feb 2025</a></p>
+            <h2 class="zh-TW lang">講道</h2>
+            <h2 class="en lang" style="display:none;">Sermons</h2>
+            <p class="zh-TW lang"><a href="https://youtu.be/5NHdbC6S2H0?si=bLISmwtg0xPq8MUf" target="_blank">2025年2月23日</a></p>
+            <p class="en lang"><a href="https://youtu.be/5NHdbC6S2H0?si=bLISmwtg0xPq8MUf" target="_blank">23rd Feb 2025</a></p>
 
-			<p class="zh-TW lang"><a href="https://youtu.be/5UzoadI2a2k?si=RfvH4W1GY59dWtwj" target="_blank">2025年2月16日</a></p>
-			<p class="en lang"><a href="https://youtu.be/5UzoadI2a2k?si=RfvH4W1GY59dWtwj" target="_blank">16th Feb 2025</a></p>
+            <p class="zh-TW lang"><a href="https://youtu.be/5UzoadI2a2k?si=RfvH4W1GY59dWtwj" target="_blank">2025年2月16日</a></p>
+            <p class="en lang"><a href="https://youtu.be/5UzoadI2a2k?si=RfvH4W1GY59dWtwj" target="_blank">16th Feb 2025</a></p>
 
-			<p class="zh-TW lang"><a href="https://youtu.be/SDX_VAfN9xo?si=0EQnAZ07PK120RTT" target="_blank">2025年2月9日</a></p>
-			<p class="en lang"><a href="https://youtu.be/SDX_VAfN9xo?si=0EQnAZ07PK120RTT" target="_blank">9th Feb 2025</a></p>
+            <p class="zh-TW lang"><a href="https://youtu.be/SDX_VAfN9xo?si=0EQnAZ07PK120RTT" target="_blank">2025年2月9日</a></p>
+            <p class="en lang"><a href="https://youtu.be/SDX_VAfN9xo?si=0EQnAZ07PK120RTT" target="_blank">9th Feb 2025</a></p>
 
-			
-			<p class="zh-TW lang"><a href="https://youtu.be/3k2r_d0PM7Y?si=lkCKrWIawYhUyUTr" target="_blank">2025年2月2日</a></p>
-			<p class="en lang"><a href="https://youtu.be/3k2r_d0PM7Y?si=lkCKrWIawYhUyUTr" target="_blank">2nd Feb 2025</a></p>
-
-		</section>		
+            <p class="zh-TW lang"><a href="https://youtu.be/3k2r_d0PM7Y?si=lkCKrWIawYhUyUTr" target="_blank">2025年2月2日</a></p>
+            <p class="en lang"><a href="https://youtu.be/3k2r_d0PM7Y?si=lkCKrWIawYhUyUTr" target="_blank">2nd Feb 2025</a></p>
+        </section>		
         <section id="events">
             <h2 class="zh-TW lang">活動</h2>
             <h2 class="en lang" style="display:none;">Events</h2>
-            <p class="zh-TW lang">活動日曆，活動報名，過去活動的亮點。</p>
-            <p class="en lang" style="display:none;">Event calendar, event registration, highlights of past events.</p>
-            <ul>
-                <li class="zh-TW"><a href="past-events.html">過往活動</a></li>
-                <li class="en" style="display:none;"><a href="past-events.html">Past Events</a></li>
-            </ul>
+            <p class="zh-TW lang">請瀏覽本會facebook網頁 <a href="https://www.facebook.com/CGGCNTHK/" target="_blank">https://www.facebook.com/CGGCNTHK/</a></p>
+            <p class="en lang" style="display:none;">Please visit our Facebook page <a href="https://www.facebook.com/CGGCNTHK/" target="_blank">https://www.facebook.com/CGGCNTHK/</a></p>
         </section>
         <section id="contact">
             <h2 class="zh-TW lang">聯絡我們</h2>
             <h2 class="en lang" style="display:none;">Contact Us</h2>
-            <p class="zh-TW lang">聯絡方式，地圖位置，聯絡表格。</p>
-            <p class="en lang" style="display:none;">Contact information, map location, contact form.</p>
-        </section>
-        <section id="giving">
-            <h2 class="zh-TW lang">捐贈</h2>
-            <h2 class="en lang" style="display:none;">Giving</h2>
-            <p class="zh-TW lang">捐款和支持。</p>
-            <p class="en lang" style="display:none;">Donations and support.</p>
+            <p class="zh-TW lang">地址: 上水新豐路65號2-3樓</p>
+            <p class="zh-TW lang">電郵: church@cggc.org.hk</p>
+            <p class="zh-TW lang">電話: 95827316</p>
+            <p class="zh-TW lang">位置: <a href="https://maps.app.goo.gl/AYTBxxvZivifH6ZP8" target="_blank">查看地圖</a></p>
+            <p class="en lang" style="display:none;">Address: 2-3/F, 65 San Fung Road, Sheung Shui</p>
+            <p class="en lang" style="display:none;">Email: church@cggc.org.hk</p>
+            <p class="en lang" style="display:none;">Phone: 95827316</p>
+            <p class="en lang" style="display:none;">Location: <a href="https://maps.app.goo.gl/AYTBxxvZivifH6ZP8" target="_blank">View Map</a></p>
         </section>
     </main>
     <footer>
-        <p class="zh-TW lang">&copy; 2025 教會網站. 保留所有權利。</p>
+        <p class="zh-TW lang">&copy; 2025 教會網站。</p>
         <p class="en lang" style="display:none;">&copy; 2025 Church Website. All rights reserved.</p>
-		
-		
-		<nav>
+
+        <nav>
             <ul>
                 <li class="zh-TW nav-link"><a href="#home">首頁</a></li>
                 <li class="zh-TW nav-link"><a href="#about">關於我們</a></li>
@@ -167,11 +179,10 @@
                 <li class="zh-TW nav-link">
                     <a href="#events">活動</a>
                     <ul>
-                        <li><a href="past-events.html">過往活動</a></li> <!-- Added link to sub-page -->
+                        <li><a href="past-events.html">過往活動</a></li>
                     </ul>
                 </li>
                 <li class="zh-TW nav-link"><a href="#contact">聯絡我們</a></li>
-                <li class="zh-TW nav-link"><a href="#giving">捐贈</a></li>
                 <li class="en nav-link" style="display:none;"><a href="#home">Home</a></li>
                 <li class="en nav-link" style="display:none;"><a href="#about">About Us</a></li>
                 <li class="en nav-link" style="display:none;"><a href="#services">Services</a></li>
@@ -179,24 +190,17 @@
                 <li class="en nav-link" style="display:none;">
                     <a href="#events">Events</a>
                     <ul>
-                        <li><a href="past-events.html">Past Events</a></li> <!-- Added link to sub-page -->
+                        <li><a href="past-events.html">Past Events</a></li>
                     </ul>
                 </li>
                 <li class="en nav-link" style="display:none;"><a href="#contact">Contact Us</a></li>
-                <li class="en nav-link" style="display:none;"><a href="#giving">Giving</a></li>
             </ul>
         </nav>
-		
-		
-		<div class="language-switcher">
-			<button onclick="switchLanguage('zh-TW')">中文</button>
-			<button onclick="switchLanguage('en')">English</button>
-		</div>
+
+        <div class="language-switcher">
+            <button data-lang="zh-TW">中文</button>
+            <button data-lang="en">English</button>
+        </div>
     </footer>
 </body>
 </html>
-
-
-
-
-
