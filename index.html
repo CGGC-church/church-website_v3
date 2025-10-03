@@ -36,11 +36,11 @@
 		function promptPassword() {
         const storedPassword = sessionStorage.getItem("password"); /*        const storedPassword = localStorage.getItem("password");*/
 
-        if (storedPassword === "cggc") {
+        if (storedPassword === "abcd") {
             document.querySelectorAll('.protected').forEach(el => el.style.display = 'block');
         } else {
             const password = prompt("Please enter the password to access this section:");
-            if (password === "cggc") {
+            if (password === "abcd") {
                 sessionStorage.setItem("password", password);
                 document.querySelectorAll('.protected').forEach(el => el.style.display = 'block');
             } else {
@@ -195,6 +195,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
