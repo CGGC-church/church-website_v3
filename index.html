@@ -38,11 +38,11 @@
         function promptPassword() {
             const storedPassword = sessionStorage.getItem("password");
 
-            if (storedPassword === "CggC") {
+            if (storedPassword === "Cggc") {
                 document.querySelectorAll('.protected').forEach(el => el.style.display = 'block');
             } else {
                 const password = prompt("請輸入密碼以訪問此部分:");
-                if (password === "CggC") {
+                if (password === "Cggc") {
                     sessionStorage.setItem("password", password);
                     document.querySelectorAll('.protected').forEach(el => el.style.display = 'block');
                 } else {
@@ -137,17 +137,8 @@
         <section id="sermons" class="protected">
             <h2 class="zh-TW lang">講道</h2>
             <h2 class="en lang" style="display:none;">Sermons</h2>
-            <p class="zh-TW lang"><a href="https://youtu.be/5NHdbC6S2H0?si=bLISmwtg0xPq8MUf" target="_blank">2025年2月23日</a></p>
-            <p class="en lang"><a href="https://youtu.be/5NHdbC6S2H0?si=bLISmwtg0xPq8MUf" target="_blank">23rd Feb 2025</a></p>
-
-            <p class="zh-TW lang"><a href="https://youtu.be/5UzoadI2a2k?si=RfvH4W1GY59dWtwj" target="_blank">2025年2月16日</a></p>
-            <p class="en lang"><a href="https://youtu.be/5UzoadI2a2k?si=RfvH4W1GY59dWtwj" target="_blank">16th Feb 2025</a></p>
-
-            <p class="zh-TW lang"><a href="https://youtu.be/SDX_VAfN9xo?si=0EQnAZ07PK120RTT" target="_blank">2025年2月9日</a></p>
-            <p class="en lang"><a href="https://youtu.be/SDX_VAfN9xo?si=0EQnAZ07PK120RTT" target="_blank">9th Feb 2025</a></p>
-
-            <p class="zh-TW lang"><a href="https://youtu.be/3k2r_d0PM7Y?si=lkCKrWIawYhUyUTr" target="_blank">2025年2月2日</a></p>
-            <p class="en lang"><a href="https://youtu.be/3k2r_d0PM7Y?si=lkCKrWIawYhUyUTr" target="_blank">2nd Feb 2025</a></p>
+            <p class="zh-TW lang"><a href="https://youtu.be/3zBsF11wxok?si=42ajdKazggFQLd9J" target="_blank">2025年10月5日</a></p>
+            <p class="en lang"><a href="https://youtu.be/3zBsF11wxok?si=42ajdKazggFQLd9J" target="_blank">5th Oct 2025</a></p>
         </section>		
         <section id="events">
             <h2 class="zh-TW lang">活動</h2>
@@ -206,6 +197,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
