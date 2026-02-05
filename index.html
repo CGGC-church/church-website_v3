@@ -7,27 +7,134 @@
     <meta name="keywords" content="基督教, 教會, 禮拜, 講道, 活動">
     <title>基督教顯恩堂 | Christian Glorify Grace Church</title>
     <style>
+	
+		html {
+			scroll-behavior: auto !important;
+		}
+	
+		html:focus-within {
+    scroll-behavior: auto !important;
+}
+	
         body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; }
-        header, footer { background-color: #4CAF50; color: white; padding: 20px; text-align: center; position: relative; }
+        header, footer { background-color: #1e90ff; color: white; padding: 20px; text-align: center; position: relative; }
         nav ul { list-style-type: none; padding: 0; margin: 0; }
         nav ul li { display: inline-block; margin-right: 10px; position: relative; }
         nav ul li a { color: white; text-decoration: none; padding: 5px 10px; border-radius: 5px; }
-        nav ul li a:hover { background-color: #45a049; }
-        nav ul li ul { display: none; position: absolute; top: 100%; left: 0; background-color: #4CAF50; padding: 0; list-style-type: none; }
+        nav ul li a:hover { background-color: #00bfff }
+        nav ul li ul { display: none; position: absolute; top: 100%; left: 0; background-color: #1e90ff; padding: 0; list-style-type: none; }
         nav ul li:hover ul { display: flex; flex-direction: row; }
         nav ul li ul li { display: inline-block; margin: 0; }
         nav ul li ul li a { display: block; padding: 10px; }
         main { padding: 20px; max-width: 800px; margin: auto; background-color: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
         section { margin-bottom: 20px; }
-        h2 { color: #4CAF50; }
+        h2 { color: #00bfff; }
         .hero { text-align: center; padding: 50px 0; background-color: #f4f4f4; }
         .hero img { max-width: 100%; height: auto; border-radius: 10px; }
         .logo { width: 100px; height: auto; margin-bottom: 20px; }
         .language-switcher { position: absolute; top: 20px; right: 20px; }
-        .language-switcher button { margin: 0 5px; padding: 5px 10px; border: none; border-radius: 5px; background-color: #4CAF50; color: white; cursor: pointer; font-size: 12px; }
-        .language-switcher button:hover { background-color: #45a049; }
+        .language-switcher button { margin: 0 5px; padding: 5px 10px; border: none; border-radius: 5px; background-color: #1e90ff; color: white; cursor: pointer; font-size: 12px; }
+        .language-switcher button:hover { background-color: #00bfff; }
         .protected { display: none; }
-    </style>
+    
+	
+		
+	
+		/* 活動圖片 2 排：上排 3 張，下排 2 張 */
+		.event-gallery {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+			justify-items: center;
+			margin-top: 20px;
+		}
+
+		.event-item {
+			text-align: center;
+		}
+
+		/*.event-item img {
+			width: 100%;
+		max-width: 300px;
+		border-radius: 10px;
+		box-shadow: 0 0 6px rgba(0,0,0,0.2);
+		}*/
+		
+		.event-item img {
+			width: 100%;
+			height: 160px;   /* or any height you want */
+			object-fit: cover;
+			border-radius: 10px;
+			box-shadow: 0 0 8px rgba(0,0,0,0.2);
+			cursor: pointer;
+			transition: 0.3s;
+		}
+		
+		/* 滑鼠移過縮圖時放大（與 past-events.html 相同） */
+		.event-item img:hover {
+			transform: scale(1.03);
+		}
+
+		/* 手機版自動變 1 欄 */
+		@media (max-width: 768px) {
+		.event-gallery {
+			grid-template-columns: 1fr;
+			}
+		}
+
+
+		.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+.lightbox img {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+}
+.lightbox:target {
+    display: block;
+}
+
+/* Lightbox 背景整層可點擊關閉 */
+.lightbox-close {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+/* 點圖片時跳動（縮放）動畫，與 past-events.html 一樣 */
+.lightbox img {
+    animation: zoomIn 0.25s ease-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+	
+	
+	</style>
+	
     <script>
         function switchLanguage(lang) {
             document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
@@ -60,7 +167,12 @@
                 });
             });
         });
+		
+		
+		
+		
     </script>
+	
 </head>
 <body>
     <header>
@@ -78,7 +190,7 @@
                 <li class="zh-TW nav-link"><a href="#services">禮拜</a></li>
                 <li class="zh-TW nav-link"><a href="#sermons" onclick="promptPassword()">講道</a></li>            
                 <li class="zh-TW nav-link">
-                    <a href="#events">活動</a>
+                    <a href="#events">社區關愛行動</a>
                     <ul>
                         <li><a href="past-events.html">過往活動</a></li>
                     </ul>
@@ -89,9 +201,9 @@
                 <li class="en nav-link" style="display:none;"><a href="#services">Services</a></li>
                 <li class="en nav-link" style="display:none;"><a href="#sermons" onclick="promptPassword()">Sermons</a></li>            
                 <li class="en nav-link" style="display:none;">
-                    <a href="#events">Events</a>
+                    <a href="#events">Community Care Projects</a>
                     <ul>
-                        <li><a href="past-events.html">Past Events</a></li>
+                        <li><a href="past-events.html?lang=en" class="lang en">Past Events</a></li>
                     </ul>
                 </li>
                 <li class="en nav-link" style="display:none;"><a href="#contact">Contact Us</a></li>
@@ -139,7 +251,7 @@
         <section id="sermons" class="protected">
             <h2 class="zh-TW lang">講道</h2>
             <h2 class="en lang" style="display:none;">Sermons</h2>
-            <p class="zh-TW lang"><a href="https://youtu.be/Z8bTj_G2rag?si=br9dItcK4Pw8HLv8" target="_blank">2026年2月1日</a></p>
+			<p class="zh-TW lang"><a href="https://youtu.be/Z8bTj_G2rag?si=br9dItcK4Pw8HLv8" target="_blank">2026年2月1日</a></p>
             <p class="en lang"><a href="https://youtu.be/Z8bTj_G2rag?si=br9dItcK4Pw8HLv8" target="_blank">1st Feb 2026</a></p> 
             <p class="zh-TW lang"><a href="https://youtu.be/9vMyueEw2XM?si=xvhyOp1OdFu3oIeG" target="_blank">2026年1月25日</a></p>
             <p class="en lang"><a href="https://youtu.be/9vMyueEw2XM?si=xvhyOp1OdFu3oIeG" target="_blank">25th Jan 2026</a></p>
@@ -178,12 +290,134 @@
             <p class="zh-TW lang"><a href="https://youtu.be/3zBsF11wxok?si=42ajdKazggFQLd9J" target="_blank">2025年10月5日</a></p>
             <p class="en lang"><a href="https://youtu.be/3zBsF11wxok?si=42ajdKazggFQLd9J" target="_blank">5th Oct 2025</a></p>
         </section>		
-        <section id="events">
-            <h2 class="zh-TW lang">活動</h2>
-            <h2 class="en lang" style="display:none;">Events</h2>
-            <p class="zh-TW lang">請瀏覽本會facebook網頁 <a href="https://www.facebook.com/CGGCNTHK/" target="_blank">https://www.facebook.com/CGGCNTHK/</a></p>
-            <p class="en lang" style="display:none;">Please visit our Facebook page <a href="https://www.facebook.com/CGGCNTHK/" target="_blank">https://www.facebook.com/CGGCNTHK/</a></p>
-        </section>
+
+
+		<section id="events">
+    <h2 class="zh-TW lang">社區關愛行動</h2>
+    <h2 class="en lang" style="display:none;">Community Care Projects</h2>
+
+    <!-- 中文 -->
+    <div class="zh-TW lang">
+        <h3>過往活動</h3>
+
+        <div class="event-gallery">
+
+            <div class="event-item">
+                <a href="#img1"><img src="Youth_Growth_Project.JPG" alt="Youth Growth Project"></a>                
+				<p class="zh-TW lang"><a href="past-events.html">青少年成長學習生活體驗計劃</a></p>				
+            </div>
+
+            <div class="event-item">
+                <a href="#img2"><img src="Teens_Peers_Project.JPG" alt="Teens Peers Project"></a>               
+				<p class="zh-TW lang"><a href="past-events.html">伴您同行 2025</a></p>
+            </div>
+
+            <div class="event-item">
+                <a href="#img3"><img src="Praise_Dance_Project.JPG" alt="Praise Dance Project"></a>                
+				<p class="zh-TW lang"><a href="past-events.html">社區轉化讚美操計劃</a></p>
+            </div>
+
+            <div class="event-item">
+                <a href="#img4"><img src="Women_Caring_Project.JPG" alt="Women Caring Project"></a>
+				<p class="zh-TW lang"><a href="past-events.html">婦女興趣工作坊 2025</a></p>
+            </div>
+
+            <div class="event-item">
+                <a href="#img5"><img src="Elder_Caring_Project.JPG" alt="Elder Caring Project"></a>
+				<p class="zh-TW lang"><a href="past-events.html">長者關懷與探訪</a></p>
+            </div>
+
+            <div class="event-item">
+                <a href="#img6"><img src="Parents_Thanksgiving.JPG" alt="Parents Thanksgiving"></a>
+				<p class="zh-TW lang"><a href="past-events.html">懇親會2025–親親父母恩</a></p>
+            </div>
+
+        </div>
+
+        <p>其他活動可瀏覽本會 Facebook 網頁：
+            <a href="https://www.facebook.com/CGGCNTHK/" target="_blank">https://www.facebook.com/CGGCNTHK/</a>
+        </p>
+    </div>
+
+    <!-- 英文 -->
+    <div class="en lang" style="display:none;">
+        <h3>Past Events</h3>
+
+        <div class="event-gallery">
+
+            <div class="event-item">
+                <a href="#img1"><img src="Youth_Growth_Project.JPG" alt="Youth Growth Project"></a>
+				<p class="en lang"><a href="past-events.html?lang=en" class="lang en">Youth Growth & Life Learning Program</a></p>
+            </div>
+
+            <div class="event-item">
+                <a href="#img2"><img src="Teens_Peers_Project.JPG" alt="Teens Peers Project"></a>
+				<p class="en lang"><a href="past-events.html?lang=en" class="lang en">Peers for Teenagers Project 2025</a></p>
+            </div>
+
+            <div class="event-item">
+                <a href="#img3"><img src="Praise_Dance_Project.JPG" alt="Praise Dance Project"></a>
+				<p class="en lang"><a href="past-events.html?lang=en" class="lang en">Praise Dance Community Transformation Project</a></p>
+            </div>
+
+            <div class="event-item">
+                <a href="#img4"><img src="Women_Caring_Project.JPG" alt="Women Caring Project"></a>
+				<p class="en lang"><a href="past-events.html?lang=en" class="lang en">Women's Interest Workshop 2025</a></p>
+            </div>
+
+            <div class="event-item">
+                <a href="#img5"><img src="Elder_Caring_Project.JPG" alt="Elder Caring Project"></a>
+				<p class="en lang"><a href="past-events.html?lang=en" class="lang en">Elderly Caring Program</a></p>
+            </div>
+
+            <div class="event-item">
+                <a href="#img6"><img src="Parents_Thanksgiving.JPG" alt="Parents Thanksgiving"></a>
+				<p class="en lang"><a href="past-events.html?lang=en" class="lang en">Parents Thanksgiving 2025</a></p>
+            </div>
+
+        </div>
+
+        <p>Other events please visit our Facebook page:
+            <a href="https://www.facebook.com/CGGCNTHK/" target="_blank">https://www.facebook.com/CGGCNTHK/</a>
+        </p>
+    </div>
+
+
+   <!-- Lightbox elements -->
+<div id="img1" class="lightbox">
+    <a href="#!" class="lightbox-close"></a>
+    <img src="Youth_Growth_Project.JPG">
+</div>
+
+<div id="img2" class="lightbox">
+    <a href="#!" class="lightbox-close"></a>
+    <img src="Teens_Peers_Project.JPG">
+</div>
+
+<div id="img3" class="lightbox">
+    <a href="#!" class="lightbox-close"></a>
+    <img src="Praise_Dance_Project.JPG">
+</div>
+
+<div id="img4" class="lightbox">
+    <a href="#!" class="lightbox-close"></a>
+    <img src="Women_Caring_Project.JPG">
+</div>
+
+<div id="img5" class="lightbox">
+    <a href="#!" class="lightbox-close"></a>
+    <img src="Elder_Caring_Project.JPG">
+</div>
+
+<div id="img6" class="lightbox">
+    <a href="#!" class="lightbox-close"></a>
+    <img src="Parents_Thanksgiving.JPG">
+</div>
+
+</section>
+
+
+
         <section id="contact">
             <h2 class="zh-TW lang">聯絡我們</h2>
             <h2 class="en lang" style="display:none;">Contact Us</h2>
@@ -196,9 +430,26 @@
             <p class="en lang" style="display:none;">Phone: 95827316</p>
             <p class="en lang" style="display:none;">Location: <a href="https://maps.app.goo.gl/Ki6RWg57x3rFLmRs7" target="_blank">View Map</a></p>
         </section>
-    </main>
-    <footer>
-        <p class="zh-TW lang">&copy; 2026 教會網站 </p>
+    
+	
+
+
+	
+	
+	
+	</main>
+   
+
+
+
+
+
+
+
+
+
+   <footer>
+        <p class="zh-TW lang">&copy; 2026 基督教顯恩堂 </p>
         <p class="en lang" style="display:none;">&copy; 2026 CGGC </p>
 
         <nav>
@@ -208,7 +459,7 @@
                 <li class="zh-TW nav-link"><a href="#services">禮拜</a></li>
                 <li class="zh-TW nav-link"><a href="#sermons" onclick="promptPassword()">講道</a></li>            
                 <li class="zh-TW nav-link">
-                    <a href="#events">活動</a>
+                    <a href="#events">社區關愛行動</a>
                     <ul>
                         <li><a href="past-events.html">過往活動</a></li>
                     </ul>
@@ -219,9 +470,9 @@
                 <li class="en nav-link" style="display:none;"><a href="#services">Services</a></li>
                 <li class="en nav-link" style="display:none;"><a href="#sermons" onclick="promptPassword()">Sermons</a></li>            
                 <li class="en nav-link" style="display:none;">
-                    <a href="#events">Events</a>
+                    <a href="#events">Community Care Projects</a>
                     <ul>
-                        <li><a href="past-events.html">Past Events</a></li>
+                        <li><a href="past-events.html?lang=en" class="lang en">Past Events</a></li>
                     </ul>
                 </li>
                 <li class="en nav-link" style="display:none;"><a href="#contact">Contact Us</a></li>
@@ -235,8 +486,6 @@
     </footer>
 </body>
 </html>
-
-
 
 
 
